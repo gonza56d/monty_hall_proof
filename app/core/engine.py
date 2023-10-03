@@ -36,5 +36,5 @@ def run_game(runs: int, number_of_doors: int = 3):
         raise ValueError('Number of doors cannot be less than 3.')
 
     does_change_door_games = get_games(runs, number_of_doors, True)
-    does_not_change_door_games = get_games(runs, number_of_doors, True)
+    does_not_change_door_games = get_games(runs, number_of_doors, False)
 
