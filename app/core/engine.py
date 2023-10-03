@@ -33,10 +33,29 @@ def get_games(runs: int, number_of_doors: int, player_changes_door: bool) -> lis
     return games
 
 
-def run_game(runs: int, number_of_doors: int = 3):
+def run_game(runs: int, number_of_doors: int = 3) -> GamesResults:
     if number_of_doors < 3:
         raise ValueError('Number of doors cannot be less than 3.')
 
     results = GamesResults(runs)
     does_change_door_games = get_games(runs, number_of_doors, True)
     does_not_change_door_games = get_games(runs, number_of_doors, False)
+
+    for game in does_change_door_games:
+        if game.correct_door == game.player_door:
+            results.changed_corrects += 1
+        else:
+            game.open_door()
+            game.change_player_door()
+            if game.correct_door == game.player_door:
+                results.changed_corrects += 1
+
+    for game in does_not_change_door_games:
+        if game.correct_door == game.player_door:
+            results.not_changed_corrects += 1
+        else:
+            game.open_door()
+            if game.correct_door == game.player_door:
+                results.not_changed_corrects += 1
+
+    return results
