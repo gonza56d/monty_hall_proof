@@ -22,3 +22,4 @@ class Game:
 
     doors: list[Door]
     player_door: int
+    played_changes_door: bool
