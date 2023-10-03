@@ -13,6 +13,8 @@ def get_games(runs: int, number_of_doors: int, player_changes_door: bool) -> lis
             is_correct = False
             if not already_correct:
                 is_correct = True if d + 1 == number_of_doors else bool(randint(0, 1))
+                if is_correct:
+                    already_correct = True
 
             doors.append(
                 Door(
@@ -37,4 +39,3 @@ def run_game(runs: int, number_of_doors: int = 3):
 
     does_change_door_games = get_games(runs, number_of_doors, True)
     does_not_change_door_games = get_games(runs, number_of_doors, False)
-
