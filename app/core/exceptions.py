@@ -1,0 +1,3 @@
+
+class WrongStateError(Exception):
+    pass
