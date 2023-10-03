@@ -1,6 +1,6 @@
 from random import randint
 
-from app.core.models import Door, Game
+from app.core.models import Door, Game, GamesResults
 
 
 def get_games(runs: int, number_of_doors: int, player_changes_door: bool) -> list[Game]:
@@ -37,5 +37,6 @@ def run_game(runs: int, number_of_doors: int = 3):
     if number_of_doors < 3:
         raise ValueError('Number of doors cannot be less than 3.')
 
+    results = GamesResults(runs)
     does_change_door_games = get_games(runs, number_of_doors, True)
     does_not_change_door_games = get_games(runs, number_of_doors, False)
