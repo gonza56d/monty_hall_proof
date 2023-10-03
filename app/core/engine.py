@@ -24,7 +24,7 @@ def get_games(runs: int, number_of_doors: int, player_changes_door: bool) -> lis
 
         games.append(Game(
             doors=doors,
-            player_door=randint(0, number_of_doors - 1),
+            player_door=doors[randint(0, number_of_doors - 1)],
             played_changes_door=player_changes_door
         ))
 
